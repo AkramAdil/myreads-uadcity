@@ -15,6 +15,8 @@ the project was created by create-react-app, to run it:
 3. Run the app
 `npm start`
 
+## Helpful Links:
+1. [How to remove all duplicates from an array of objects?](https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects/36744732#36744732)
 ## Backend Server
 
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
