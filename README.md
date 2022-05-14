@@ -1,7 +1,7 @@
 # MyReads Project
 
 # Overview
-This MyReads app user can search, add and control books provided by API, the functionality of the app is simple, user can put books in 3 shelfs:
+This MyReads app user can search, add and control books provided by API, the functionality of the app is simple, user can put books in 3 shelves:
 - Currently Reading Shelf
 - Want To Read Shelf
 - Read Shelf
