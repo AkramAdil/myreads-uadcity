@@ -12,8 +12,9 @@ const BookListPage = () => {
     
     const updateBookState = async(book,shelf) =>{
       await update(book,shelf)
-      const getAllBooks = await getAll()
-        setAllBooks(getAllBooks)
+      book.shelf= shelf
+      const updatedBooks = allBooks.filter(b=>b.id!==book.id).concat([book])
+      setAllBooks(updatedBooks)
     }
     useEffect(()=>{
       const getBooks = async ()=>{
