@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types'
 const BookCard = ({title,authors,image,bookCategory,updateBookState,book}) => {
-    
+    const shelves = [
+        {id:'1', shelfName:'CurrentReading', shelfDisplayName:'Currently Reading'},
+        {id:'2', shelfName:'wantToRead', shelfDisplayName:'Want to Read'},
+        {id:'3', shelfName:'read', shelfDisplayName:'Read'},
+        {id:'4', shelfName:'none', shelfDisplayName:'None'}
+    ]
     const [value,setValue] = useState(null)
     const changeValue = (e) =>{
         setValue(e.target.value)
@@ -25,15 +30,10 @@ const BookCard = ({title,authors,image,bookCategory,updateBookState,book}) => {
                 ></div>
                 <div className="book-shelf-changer">
                 <select value ={value?value:bookCategory} onChange={changeValue}>
-                    <option value="none" disabled>
+                    <option disabled>
                     Move to...
                     </option>
-                    <option value="currentlyReading">
-                    Currently Reading
-                    </option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="none">None</option>
+                    {shelves.map(shelf=><option key={shelf.id}value={shelf.shelfName}>{shelf.shelfDisplayName}</option>)}
                 </select>
                 </div>
             </div>
@@ -44,4 +44,12 @@ const BookCard = ({title,authors,image,bookCategory,updateBookState,book}) => {
     );
 };
 
+BookCard.propTypes = {
+    title: PropTypes.string,
+    authors: PropTypes.array,
+    image: PropTypes.string,
+    bookCategory: PropTypes.string,
+    updateBookState: PropTypes.func,
+    book: PropTypes.object
+}
 export default BookCard;
