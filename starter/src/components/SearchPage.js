@@ -14,11 +14,14 @@ const SearchPage = () => {
   }
   useEffect(()=>{
     const getBooks = async ()=>{
-      if(searchTerm!==""){
+      if(searchTerm==="") {
+        setFoundBooks([])
+      }
+      else {
         const searchedBooks = await search(searchTerm)
         const shelfedBooks = await getAll()
-        const filterdBooks = shelfedBooks.filter(book=>book.title.includes(capitalizeFirstLetter(searchTerm))) //filter books come from allbooks that match serchTerm
-        const allBooks = filterdBooks.concat(searchedBooks).filter(x=>typeof x=="object"&&x.id)//combine books comes from search API and book come from allBooks API
+        const filterdBooks = shelfedBooks.filter(book=>book.title.includes(capitalizeFirstLetter(searchTerm))) //filter books come from getAll that match serchTerm
+        const allBooks = filterdBooks.concat(searchedBooks).filter(x=>typeof x=="object"&&x.id)//combine books comes from search API and book come from getAll API
         const newBooks = allBooks.filter((book, index) =>//to filter duplicate books 
         index === allBooks.findIndex((t) => (
           t.id === book.id
